@@ -25,7 +25,7 @@ return new class extends Migration
             $table->dateTime('repair_reciev_date')->nullable()->comment('วันที่รับงาน');
             $table->string('repair_reviev_user',10)->nullable()->comment('ช่างรับงาน');
             $table->dateTime('repair_finish_date')->nullable()->comment('วันที่ซ่อมเสร็จ');
-            $table->string('repair_finich_user',10)->nullable()->comment('ช่างรายงานซ่อมเสร็จ');
+            $table->string('repair_finish_user',10)->nullable()->comment('ช่างรายงานซ่อมเสร็จ');
             $table->string('repair_status',10);
             $table->timestamps();
         });

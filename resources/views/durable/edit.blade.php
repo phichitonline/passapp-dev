@@ -198,6 +198,8 @@
                                     <label for="pass_number" class="col-sm-2 col-form-label text-md-right">เลขครุภัณฑ์</label>
                                     <div class="col-sm-4">
                                         <input type="hidden" class="form-control" id="id" name="id" value="{{ $durable->id }}">
+                                        <input type="hidden" class="form-control" id="durableid" name="durableid" value="{{ $durable->id }}">
+                                        <input type="hidden" class="form-control" id="userid" name="userid" value="{{ Auth::user()->id }}">
                                         <input type="text" class="form-control" id="pass_number" name="pass_number" placeholder="เลขครุภัณฑ์" value="{{ $durable->pass_number }}">
                                     </div>
                                     <label for="life" class="col-sm-2 col-form-label">ID:{{ $durable->id }}</label>
@@ -308,6 +310,7 @@
                                 <div class="form-group row">
                                     <label for="depcode" class="col-sm-2 col-form-label text-md-right">ใช้ประจำที่</label>
                                     <div class="col-sm-6">
+                                        <input type="hidden" name="depcodeold" value="{{ $durable->depcode }}">
                                         <select id="depcode" name="depcode" class="js-example-basic-single">
                                             @foreach ($department as $department)
                                             <option value="{{ $department->depcode }}" @if ($department->depcode == $durable->depcode) selected @endif>{{ $department->dep_name }}</option>

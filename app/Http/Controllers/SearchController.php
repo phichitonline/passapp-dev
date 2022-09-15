@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Durable;
+use App\Models\Transfer;
+use App\Models\Repair;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -84,9 +86,28 @@ class SearchController extends Controller
         ->where('durables.id', $id)
         ->get();
 
+        $transfers = Transfer::select('transfers.*', 'departments.dep_name', 'departments2.dep_name AS dep_name_old','users.name AS username')
+        ->leftJoin('departments', 'transfers.depcode', '=', 'departments.depcode')
+        ->leftJoin('departments AS departments2', 'transfers.depcodeold', '=', 'departments2.depcode')
+        ->leftJoin('users', 'transfers.userid', '=', 'users.id')
+        ->where('transfers.durableid', $id)
+        ->orderby('transfers.id', 'desc')
+        ->get();
+        $tranfer_count = Transfer::where('durableid', $id)->count();
+
+        $repairs = Repair::select('repairs.*')
+        ->where('repairs.durable_id', $id)
+        ->orderby('repairs.id', 'desc')
+        ->get();
+        $repair_count = Repair::where('durable_id', $id)->count();
+
         return view('durable.detail', [
             'pagename' => "ข้อมูลครุภัณฑ์",
             'durable' => $durable,
+            'transfers' => $transfers,
+            'tranfer_count' => $tranfer_count,
+            'repairs' => $repairs,
+            'repair_count' => $repair_count,
         ]);
     }
 

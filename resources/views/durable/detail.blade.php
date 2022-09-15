@@ -10,6 +10,10 @@
     <!-- Slick css -->
     <link rel="stylesheet" href="{{ url('vendors/slick/slick.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url('vendors/slick/slick-theme.css') }}" type="text/css">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="{{ url('vendors/dataTable/datatables.min.css') }}" type="text/css">
+
 @endsection
 
 @section('content')
@@ -154,7 +158,7 @@
                                     <span class="badge bg-light">อยู่ระหว่างการสำรวจ</span>
                                 @endif
                                 @isset($data->updated_at)
-                                    <span class="badge">(Updated : {{ DateThaiFull($data->updated_at->format('Y-m-d')) }})</span>
+                                    <span class="badge text-primary">(ปรับปรุงล่าสุด : {{ DateThaiShortYY($data->updated_at->format('Y-m-d')) }} เวลา {{ TimeThai($data->updated_at->format('H:i:s')) }} น.)</span>
                                 @endisset
                             </p>
 
@@ -227,7 +231,7 @@
                 </div>
             </div> --}}
             <p class="m-t-b-0" style='page-break-after:always'></p>
-
+@endforeach
             <div class="card">
                 <div class="card-body">
                     <ul class="nav nav-pills mb-4" role="tablist">
@@ -237,11 +241,11 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                               aria-controls="profile" aria-selected="false">ประวัติโอนย้าย (4)</a>
+                               aria-controls="profile" aria-selected="false">ประวัติโอนย้าย ({{ $tranfer_count }})</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                               aria-controls="contact" aria-selected="false">ประวัติการซ่อม (3)</a>
+                               aria-controls="contact" aria-selected="false">ประวัติการซ่อม ({{ $repair_count }})</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -255,11 +259,61 @@
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <h4 class="mb-4">ประวัติโอนย้าย</h4>
-
+                            <div class="table-responsive">
+                                <table id="example1" class="table table-small">
+                                    <thead>
+                                    <tr>
+                                        <th>วันที่</th>
+                                        <th>หน่วยงานเดิม</th>
+                                        <th>หน่วยงานที่ย้ายไป</th>
+                                        <th>ย้ายโดย</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($transfers as $transfer)
+                                        <tr>
+                                            <td>{{ $transfer->created_at }}</td>
+                                            <td>{{ $transfer->dep_name_old }}</td>
+                                            <td>{{ $transfer->dep_name }}</td>
+                                            <td>{{ $transfer->username }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <h4 class="mb-4">ประวัติการซ่อม</h4>
-
+                            <div class="table-responsive">
+                                <table id="example2" class="table table-small">
+                                    <thead>
+                                    <tr>
+                                        <th>วันที่ส่งซ่อม</th>
+                                        <th>สาเหตุหรืออาการ</th>
+                                        <th>ผู้ส่งซ่อม</th>
+                                        <th>วันที่รับงาน</th>
+                                        <th>ช่างรับงาน</th>
+                                        <th>วันที่ซ่อมเสร็จ</th>
+                                        <th>ช่างรายงาน</th>
+                                        <th>มูลค่าการซ่อม</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($repairs as $repair)
+                                        <tr>
+                                            <td>{{ $repair->repair_date }}</td>
+                                            <td>{{ $repair->repair_text }}</td>
+                                            <td>{{ $repair->repair_user }}</td>
+                                            <td>{{ $repair->repair_recieve_date }}</td>
+                                            <td>{{ $repair->repair_recieve_user }}</td>
+                                            <td>{{ $repair->repair_finish_date }}</td>
+                                            <td>{{ $repair->repair_finish_user }}</td>
+                                            <td>{{ $repair->repair_price }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -280,11 +334,11 @@
             <form class="form form-horizontal" action="{{ route('repair.store') }}" method="POST" enctype="multipart/form-data" id="upload-image">
                 @csrf
                 <div class="modal-body">
-                    <h3>{{ $data->pass_number }}</h3>
-                    <p>{{ $data->pass_name }} {{ $data->model }}</p>
+                    <h3>@foreach ($durable as $data) {{ $data->pass_number }} @endforeach</h3>
+                    <p>@foreach ($durable as $data) {{ $data->pass_name }} {{ $data->model }} @endforeach</p>
                     <p>ผู้แจ้งซ่อม:
                         @guest @else {{ Auth::user()->name }}
-                        <input type="hidden" name="durable_id" value="{{ $data->id }}">
+                        <input type="hidden" name="durable_id" value="@foreach ($durable as $data) {{ $data->id }} @endforeach">
                         <input type="hidden" name="repair_user" value="{{ Auth::user()->name }}">
                         <input type="hidden" name="repair_date" value="{{ date("Y-m-d H:i:s") }}">
                         <input type="hidden" name="repair_status" value="1">
@@ -304,11 +358,15 @@
         </div>
       </div>
 
-@endforeach
+
 
 @endsection
 
 @section('script')
+    <!-- DataTable -->
+    <script src="{{ url('vendors/dataTable/datatables.min.js') }}"></script>
+    <script src="{{ url('assets/js/examples/datatable.js') }}"></script>
+
     <!-- Lightbox -->
     <script src="{{ url('vendors/lightbox/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ url('assets/js/examples/lightbox.js') }}"></script>
