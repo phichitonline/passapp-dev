@@ -16,7 +16,9 @@ class RepairController extends Controller
      */
     public function index()
     {
-        //
+        return view('repair.index', [
+            'pagename' => "รายการส่งซ่อม",
+        ]);
     }
 
     /**
