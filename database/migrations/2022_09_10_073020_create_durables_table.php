@@ -40,12 +40,12 @@ return new class extends Migration
             $table->string('manual_file1')->nullable()->comment('ไฟล์คู่มือ');
             $table->text('memo_text')->nullable()->comment('หมายเหตุ');
 
-            $table->unsignedBigInteger('user_id')->comment('Create by User');
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->unsignedBigInteger('user_id')->comment('Create by User');
+            // $table->foreign('user_id')->references('id')->on('users');
 
-            $table->foreign('fasgrp')->references('id')->on('typefasgrps');
-            $table->foreign('str1')->references('id')->on('typemoneys');
-            $table->foreign('depcode')->references('depcode')->on('departments');
+            // $table->foreign('fasgrp')->references('id')->on('typefasgrps');
+            // $table->foreign('str1')->references('id')->on('typemoneys');
+            // $table->foreign('depcode')->references('depcode')->on('departments');
             $table->timestamps();
         });
     }

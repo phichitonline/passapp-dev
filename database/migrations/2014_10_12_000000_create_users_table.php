@@ -28,10 +28,14 @@ return new class extends Migration
 
         DB::table('users')->insert(
             array(
-                ['name'=> 'admin'],
-                ['email'=> 'admin@local.com'],
-                ['password'=> '$2y$10$IEPPoaUaBVC.vuK7mKA4SedqN.rVcXkNBuCgnAdo4TjwzD0fxWSgi'],
-                ['isadmin'=> '0']
+                [
+                    'name'=> 'admin',
+                    'email'=> 'admin@local.com',
+                    'password'=> '$2y$10$IEPPoaUaBVC.vuK7mKA4SedqN.rVcXkNBuCgnAdo4TjwzD0fxWSgi',
+                    'isadmin'=> '0',
+                    'created_at'=> date("Y-m-d H:i:s"),
+                    'updated_at'=> date("Y-m-d H:i:s"),
+                ]
             )
         );
     }

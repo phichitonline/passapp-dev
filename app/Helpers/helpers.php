@@ -135,10 +135,12 @@ function baht_text ($number, $include_unit = true, $display_zero = true)
     return $text;
 }
 
-function linemessage ($messagepayload) {
+function linemessage ($linetoken, $messagepayload) {
+
     //$accToken = "cUHtU1ESPLCgxT0T5SubSI93CTpb55KcpfheBgdEYmG"; // ซ่อมออนไลน์@รพร.
     //$accToken = "Q7ekj0hKxXyJSjGpKoinle3HcopFuAkja2fe3AO406E"; // admin@notify
-    $accToken = env('ACC_TOKEN_LINE_NOTIFY');
+    // $accToken = env('ACC_TOKEN_LINE_NOTIFY');
+    $accToken = $linetoken;
     $notifyURL = "https://notify-api.line.me/api/notify";
 
     $headers = array(

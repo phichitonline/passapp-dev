@@ -73,9 +73,13 @@
     @endif
     @if ($message = Session::get('repairsuccess'))
     <div class="alert alert-success alert-with-border d-flex align-items-center" role="alert">
-        <i class="ti-check mr-2"></i> {{ $message }} {{ linemessage($message) }}
+        <i class="ti-check mr-2"></i> {{ $message }}
+        @foreach ($setting as $data)
+            @if ($data->module5 == 1)
+                {{ linemessage($data->linetoken,$message) }}
+            @endif
+        @endforeach
     </div>
-
     @endif
 
     <div class="row">
@@ -310,8 +314,8 @@
                                             <td>{{ $repair->repair_date }}</td>
                                             <td>{{ $repair->repair_text }}</td>
                                             <td>{{ $repair->repair_user }}</td>
-                                            <td>{{ $repair->repair_recieve_date }}</td>
-                                            <td>{{ $repair->repair_recieve_user }}</td>
+                                            <td>{{ $repair->repair_reciev_date }}</td>
+                                            <td>{{ $repair->repair_reciev_user }}</td>
                                             <td>{{ $repair->repair_finish_date }}</td>
                                             <td>{{ $repair->repair_finish_user }}</td>
                                             <td>{{ $repair->repair_price }}</td>

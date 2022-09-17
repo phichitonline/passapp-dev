@@ -52,6 +52,12 @@
                         <div class="form-group row">
                             <label for="s_address" class="col-md-3 col-form-label text-md-right">{{ __('เปิดปิดระบบงาน') }}</label>
                             <div class="col-md-7">
+                                <div class="form-group mt-2">
+                                    <div class="custom-control custom-checkbox custom-checkbox-primary">
+                                        <input type="checkbox" class="custom-control-input" id="module3" name="module3" value="1" @if($data->module3 == 1) checked @endif>
+                                        <label class="custom-control-label" for="module3">เปิดใช้การระบุพิกัด GPS</label>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox custom-checkbox-success">
                                         <input type="checkbox" class="custom-control-input" id="module1" name="module1" value="1" @if($data->module1 == 1) checked @endif>
@@ -64,18 +70,18 @@
                                         <label class="custom-control-label" for="module2">เปิดใช้ระบบงานซ่อมพร้อมประวัติการซ่อม</label>
                                     </div>
                                 </div>
-                                <div class="form-group mt-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="module3" name="module3" value="1" @if($data->module3 == 1) checked @endif>
-                                        <label class="custom-control-label" for="module3">เปิดใช้การระบุพิกัด GPS</label>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox custom-checkbox-warning">
+                                        <input type="checkbox" class="custom-control-input" id="module5" name="module5" value="1" @if($data->module5 == 1) checked @endif>
+                                        <label class="custom-control-label" for="module5">มีและใช้งาน Line notify แจ้งเตือนการส่งซ่อม</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <div class="custom-control custom-checkbox custom-checkbox-danger">
                                         <input type="checkbox" class="custom-control-input" id="module4" name="module4" value="1" @if($data->module4 == 1) checked @endif>
                                         <label class="custom-control-label" for="module4">เก็บประวัติการโอนย้ายครุภัณฑ์</label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- <div class="form-group">
                                     <div class="custom-control custom-checkbox custom-checkbox-warning">
                                         <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
@@ -97,6 +103,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="linetoken" class="col-md-3 col-form-label text-md-right">{{ __('Line notify accToken') }}</label>
+                            <div class="col-md-7">
+                                <input id="linetoken" type="text" class="form-control" name="linetoken" value="{{ $data->linetoken }}">
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-7 offset-md-3">
                                 <button type="submit" class="btn btn-primary"><i class="ti-check mr-2"></i>
@@ -112,4 +125,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

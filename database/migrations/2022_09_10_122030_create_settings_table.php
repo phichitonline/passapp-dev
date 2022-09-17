@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('module3',10);
             $table->string('module4',10);
             $table->string('module5',10);
+            $table->string('linetoken')->nullable();
             $table->timestamps();
         });
 
@@ -43,6 +44,7 @@ return new class extends Migration
                     'module3'=> '1',
                     'module4'=> '0',
                     'module5'=> '0',
+                    'linetoken'=> '',
                 ]
             )
         );
