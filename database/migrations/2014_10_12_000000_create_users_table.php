@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 return new class extends Migration
 {
     /**
@@ -25,6 +25,15 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                ['name'=> 'admin'],
+                ['email'=> 'admin@local.com'],
+                ['password'=> '$2y$10$IEPPoaUaBVC.vuK7mKA4SedqN.rVcXkNBuCgnAdo4TjwzD0fxWSgi'],
+                ['isadmin'=> '0']
+            )
+        );
     }
 
     /**

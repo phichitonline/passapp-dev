@@ -71,6 +71,12 @@
         <i class="ti-close mr-2"></i> {{ $message }}
     </div>
     @endif
+    @if ($message = Session::get('repairsuccess'))
+    <div class="alert alert-success alert-with-border d-flex align-items-center" role="alert">
+        <i class="ti-check mr-2"></i> {{ $message }} {{ linemessage($message) }}
+    </div>
+
+    @endif
 
     <div class="row">
         <div class="col-md-12">
@@ -338,7 +344,9 @@
                     <p>@foreach ($durable as $data) {{ $data->pass_name }} {{ $data->model }} @endforeach</p>
                     <p>ผู้แจ้งซ่อม:
                         @guest @else {{ Auth::user()->name }}
+                        <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
                         <input type="hidden" name="durable_id" value="@foreach ($durable as $data) {{ $data->id }} @endforeach">
+                        <input type="hidden" name="pass_number" value="@foreach ($durable as $data) {{ $data->pass_number }} @endforeach">
                         <input type="hidden" name="repair_user" value="{{ Auth::user()->name }}">
                         <input type="hidden" name="repair_date" value="{{ date("Y-m-d H:i:s") }}">
                         <input type="hidden" name="repair_status" value="1">
@@ -347,6 +355,14 @@
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">ระบุรายละเอียด ปัญหา หรือสาเหตุการส่งซ่อม:</label>
                         <textarea class="form-control" id="repair_text" name="repair_text" required></textarea>
+                    </div>
+
+                    <div class="slick-slide-item">
+                        <img src="" class="img-fluid rounded" alt="" id="showimg1"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">ภาพถ่ายจุดที่ชำรุด:</label>
+                        <input class="form-control text-red" type="file" name="image" accept="image/*" onchange="loadFile1(event)">
                     </div>
                     </div>
                     <div class="modal-footer">
@@ -359,6 +375,15 @@
       </div>
 
 
+    <script>
+        var loadFile1 = function(event) {
+            var showimg1 = document.getElementById('showimg1');
+            showimg1.src = URL.createObjectURL(event.target.files[0]);
+            showimg1.onload = function() {
+                URL.revokeObjectURL(showimg1.src)
+            }
+        };
+    </script>
 
 @endsection
 
@@ -391,5 +416,6 @@
             swal("สำเร็จ!", "{{ $message }}", "success");
         });
     </script>
+
     @endif
 @endsection

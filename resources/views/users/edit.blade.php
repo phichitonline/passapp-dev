@@ -19,7 +19,7 @@
 </div>
           <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off" class="form-horizontal">
             @csrf
-            @method('put')
+            @method('PUT')
 
             <div class="card ">
                 <div class="card-header">{{ __('ข้อมูลผู้ใช้') }}</div>

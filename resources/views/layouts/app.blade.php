@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
     <style type="text/css">
 
@@ -71,6 +71,7 @@
     <div class="preloader-icon"></div>
 </div>
 <!-- ./ Preloader -->
+
 
 <!-- Layout wrapper -->
 <div class="layout-wrapper">
@@ -481,17 +482,17 @@
                     <ul id="repair">
                         <li class="navigation-divider">ระบบงานซ่อม</li>
                         <li>
-                            <a @if(request()->segment(1) == 'repairnew') class="active"
-                                @endif href="#">
+                            <a @if(request()->segment(1) == 'repair') class="active"
+                                @endif href="{{ route('repair.index') }}">
                                 <span class="nav-link-icon" data-feather="tool"></span>
-                                <span>ส่งซ่อมมาใหม่</span>
+                                <span>รายการส่งซ่อม</span>
                                 <span class="badge badge-warning text-white">{{ $repair_status1 }}</span>
                             </a>
                             <a @if(request()->segment(1) == 'repairing') class="active"
                                 @endif href="#">
                                 <span class="nav-link-icon" data-feather="tool"></span>
                                 <span>รับซ่อมกำลังดำเนินการ</span>
-                                <span class="badge badge-primary">0</span>
+                                <span class="badge badge-primary">{{ $repair_status2 }}</span>
                             </a>
                             <a @if(request()->segment(1) == 'repairreport') class="active"
                                 @endif href="#">
