@@ -19,14 +19,15 @@ return new class extends Migration
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('durable_id',10);
-            $table->dateTime('repair_date');
-            $table->string('repair_text');
-            $table->string('repair_user',10);
+            $table->dateTime('repair_date')->comment('วันที่ส่งซ่อม');
+            $table->string('repair_text')->comment('ปัญหาสาเหตุหรืออาการ');
+            $table->string('repair_user',10)->comment('ผู้ส่งซ่อม');
             $table->dateTime('repair_reciev_date')->nullable()->comment('วันที่รับงาน');
-            $table->string('repair_reviev_user',10)->nullable()->comment('ช่างรับงาน');
+            $table->string('repair_reciev_user',10)->nullable()->comment('ช่างรับงาน');
             $table->dateTime('repair_finish_date')->nullable()->comment('วันที่ซ่อมเสร็จ');
             $table->string('repair_finish_user',10)->nullable()->comment('ช่างรายงานซ่อมเสร็จ');
             $table->string('repair_status',10);
+            $table->string('repair_image')->nullable();
             $table->timestamps();
         });
     }

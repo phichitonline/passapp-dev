@@ -3,8 +3,8 @@
 
 @section('head')
     <!-- Slick -->
-    <link rel="stylesheet" href="{{ url('/vendors/slick/slick.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ url('/vendors/slick/slick-theme.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('vendors/slick/slick.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('vendors/slick/slick-theme.css') }}" type="text/css">
 
 @endsection
 
