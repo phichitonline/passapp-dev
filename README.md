@@ -3,6 +3,10 @@
 ## About Laravel
 
 พัฒนาด้วย Laravel version 9
+1. ติดตั้งโดยใช้ git clone และใช้คำสั่ง composer install
+2. สร้างฐานข้อมูล
+3. เปลี่ยนชื่อไฟล์ .env.example ให้เป็น .env ตั้งค่าเชื่อมต่อฐานข้อมูล
+
 - เข้าใช้งานครั้งแรกโดยใช้
 - Username = admin@local.com
 - Password = passapp
