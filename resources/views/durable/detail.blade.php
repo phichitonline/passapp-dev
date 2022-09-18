@@ -37,14 +37,14 @@
                                 <i class="ti-printer mr-2"></i> พิมพ์
                             </a> --}}
                             <a class="btn btn-outline-warning" data-toggle="modal" data-target="#repairModal">
-                                <i class="ti-pencil-alt mr-2"></i> แจ้งซ่อม
+                                <i class="mr-2" data-feather="tool"></i> แจ้งซ่อม
                             </a>
                             <a href="{{ route('durable.edit', $data->id) }}" class="btn btn-outline-warning">
                                 <i class="ti-pencil-alt mr-2"></i> แก้ไข
                             </a>
                     @else
                         <a class="btn btn-outline-warning" data-toggle="modal" data-target="#repairModal">
-                            <i class="ti-pencil-alt mr-2"></i> แจ้งซ่อม
+                            <i class="mr-2" data-feather="tool"></i> แจ้งซ่อม
                         </a>
                         <a target="_blank" href="/printpreview/?id={{ $data->id }}" class="btn btn-outline-info">
                             <i class="ti-printer mr-2"></i> พิมพ์ Sticker

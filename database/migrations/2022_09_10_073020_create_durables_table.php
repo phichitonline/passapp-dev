@@ -39,6 +39,7 @@ return new class extends Migration
             $table->string('image_filename3')->nullable()->comment('ภาพ3');
             $table->string('manual_file1')->nullable()->comment('ไฟล์คู่มือ');
             $table->text('memo_text')->nullable()->comment('หมายเหตุ');
+            $table->text('locationgps')->nullable()->comment('พิกัด GPS ของครุภัณฑ์');
 
             // $table->unsignedBigInteger('user_id')->comment('Create by User');
             // $table->foreign('user_id')->references('id')->on('users');

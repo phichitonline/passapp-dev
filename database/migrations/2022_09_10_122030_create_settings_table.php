@@ -19,16 +19,16 @@ return new class extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->id();
-            $table->string('s_no');
-            $table->string('s_name');
-            $table->string('s_headname');
-            $table->string('s_address');
-            $table->string('module1',10);
-            $table->string('module2',10);
-            $table->string('module3',10);
-            $table->string('module4',10);
-            $table->string('module5',10);
-            $table->string('linetoken')->nullable();
+            $table->string('s_no')->comment('เลขที่หนังสือของหน่วยงาน');
+            $table->string('s_name')->comment('ชื่อหน่วยงาน');
+            $table->string('s_headname')->comment('ชื่อหัวหน้าหน่วยงาน');
+            $table->string('s_address')->comment('ที่อยู่');
+            $table->string('module1',10)->comment('ระบบศูนย์เครื่องมือแพทย์');
+            $table->string('module2',10)->comment('ระบบงานซ่อม');
+            $table->string('module3',10)->comment('เปิดใช้การระบุพิกัด GPS');
+            $table->string('module4',10)->comment('ระบบงานอื่นๆ');
+            $table->string('module5',10)->comment('Line notify แจ้งเตือนการส่งซ่อม');
+            $table->string('linetoken')->nullable()->comment('Line notify accToken');
             $table->timestamps();
         });
 
