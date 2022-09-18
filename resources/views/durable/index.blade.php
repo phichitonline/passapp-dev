@@ -116,9 +116,9 @@
                                         <a href="{{ route('search.show', $data->id) }}" class="dropdown-item">ข้อมูล</a>
                                         @else
                                             <a href="{{ route('durable.show', $data->id) }}" class="dropdown-item">ข้อมูล</a>
-                                            @if (Auth::user()->isadmin <= "1")
+                                            @if (Auth::user()->isadmin == "0")
                                             <a href="{{ route('durable.edit', $data->id) }}" class="dropdown-item">แก้ไข</a>
-                                            <form id="deleteForm" action="{{ route('durable.destroy', $data->id) }}" method="POST">
+                                            {{-- <form id="deleteForm" action="{{ route('durable.destroy', $data->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="id" value="{{ $data->id }}">
@@ -127,8 +127,8 @@
                                                 <input type="hidden" name="image3_del" value="{{ $data->image_filename3 }}">
                                                 <input type="hidden" name="manual_file_del" value="{{ $data->manual_file1 }}">
                                             </form>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="#" class="dropdown-item text-danger" onclick="deleteConfirm()">*** ลบ ***</a>
+                                            <div class="dropdown-divider"></div> --}}
+                                            {{-- <a href="#" class="dropdown-item text-danger" onclick="deleteConfirm()">*** ลบ ***</a> --}}
                                             @endif
                                         @endif
                                     </div>

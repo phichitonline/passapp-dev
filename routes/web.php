@@ -9,6 +9,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RepairController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TypefasgrpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/report', [ReportController::class, 'index'])->name('report');
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'index'])->name('survey');
+
+    Route::resource('/department', DepartmentController::class);
+    Route::resource('/typefasgrp', TypefasgrpController::class);
 });
 
 Route::resource('/search', SearchController::class);

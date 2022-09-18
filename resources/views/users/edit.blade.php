@@ -12,9 +12,26 @@
 <div class="page-header">
     <div class="page-title">
         <h3>{{ $pagename }}</h3>
-            <a href="{{ route('user.index') }}" class="btn btn-outline-warning">
+            {{-- <a href="{{ route('user.index') }}" class="btn btn-outline-warning">
                 <i class="ti-control-backward mr-2"></i> กลับ
-            </a>
+            </a> --}}
+            <div class="dropdown">
+                @guest
+                @else
+                    @if (Auth::user()->isadmin <= "1")
+                        <form id="deleteForm" action="{{ route('user.destroy', $user->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="userid" value="{{ $user->id }}">
+                        </form>
+                        <a href="{{ route('user.index') }}" class="btn btn-outline-warning">
+                            <i class="ti-control-backward mr-2"></i> กลับ
+                        </a>
+                        <a href="#" class="btn btn-outline-danger" onclick="deleteConfirm()"><i class="ti-trash mr-2"></i> ลบ</a>
+                    @else
+                    @endif
+                @endif
+            </div>
     </div>
 </div>
           <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off" class="form-horizontal">
@@ -134,5 +151,27 @@
     <!-- Select2 -->
     <script src="{{ url('vendors/select2/js/select2.min.js') }}"></script>
     <script src="{{ url('assets/js/examples/select2.js') }}"></script>
+
+    <script>
+        function deleteConfirm() {
+            $(document).ready(function(){
+            swal({
+            title: "คุณแน่ใจที่จะลบรายการนี้?",
+            text: "เมื่อลบแล้ว คุณจะไม่สามารถกู้คืนได้!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    document.getElementById("deleteForm").submit();
+                } else {
+                }
+            });
+
+        });
+        }
+
+    </script>
 
 @endsection

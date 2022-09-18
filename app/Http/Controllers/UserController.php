@@ -34,7 +34,7 @@ class UserController extends Controller
             'users' => $user,
             'usertype' => Usertype::all(),
             'department' => Department::all(),
-            ]);
+        ]);
     }
 
     /**
