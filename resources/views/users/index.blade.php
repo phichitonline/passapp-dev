@@ -16,7 +16,6 @@
 <div class="page-header">
     <div class="page-title">
         <h3>{{ $pagename }}</h3>
-        @if (isset($_GET['keyword'])) <p class="card-title">ผลการค้นหา คำค้น "{{ $_GET['keyword'] }}"</p> @endif
         @guest
         @else
             @if (Auth::user()->isadmin == "0")
@@ -88,18 +87,18 @@
 
                                 @if ($user->id != auth()->id())
 
-                                <form id="deleteForm" action="{{ route('user.destroy', $user) }}" method="post">
+                                {{-- <form id="deleteForm" action="{{ route('user.destroy', $user) }}" method="post">
                                       @csrf
                                       @method('DELETE')
                                       <input type="hidden" name="avatar_del" value="{{ $user->avatar }}">
-                                </form>
+                                </form> --}}
 
                                 <a href="{{ route('user.edit', $user) }}" class="btn btn-outline-primary btn-sm btn-floating" data-toggle="tooltip" title="แก้ไข">
                                     <i class="ti-pencil"></i>
                                 </a>
-                                <a href="#" class="btn btn-outline-danger btn-sm btn-floating ml-2" data-toggle="tooltip" title="ลบ" onclick="deleteConfirm()">
+                                {{-- <a href="#" class="btn btn-outline-danger btn-sm btn-floating ml-2" data-toggle="tooltip" title="ลบ" onclick="deleteConfirm()">
                                     <i class="ti-trash"></i>
-                                </a>
+                                </a> --}}
                                 @else
                                     <a href="{{ url('/') }}/profile" class="btn btn-outline-primary btn-sm btn-floating" data-toggle="tooltip" title="แก้ไข">
                                         <i class="ti-pencil"></i>

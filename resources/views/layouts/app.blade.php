@@ -374,6 +374,14 @@
                             </a>
                         </li>
                         @endif
+                        {{-- <li>
+                            <a href="#" data-menu-target="#setting">
+                                <span class="menu-tab-icon">
+                                    <i data-feather="database"></i>
+                                </span>
+                                <span>ตั้งค่า</span>
+                            </a>
+                        </li> --}}
                         <li>
                             <a href="#" data-menu-target="#setting">
                                 <span class="menu-tab-icon">
@@ -503,7 +511,27 @@
                     </ul>
 
                     <ul id="setting">
-                        <li class="navigation-divider">ตั้งค่า</li>
+                        <li class="navigation-divider">Setting</li>
+                        <li>
+                            <a href="#">
+                                <span class="nav-link-icon">
+                                    <i data-feather="settings"></i>
+                                </span>
+                                <span>ตั้งค่า</span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a @if(request()->segment(1) == 'setting') class="active"
+                                       @endif href="{{ route('setting.index') }}">ตั้งค่าระบบ</a></li>
+                                <li>
+                                    <a @if(request()->segment(1) == 'department') class="active"
+                                       @endif href="{{ route('department.index') }}">หน่วยงาน</a></li>
+                                <li>
+                                    <a @if(request()->segment(1) == 'typefasgrp') class="active"
+                                       @endif href="{{ route('typefasgrp.index') }}">ประเภทครุภัณฑ์</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             @guest
                             {{-- <a @if(request()->segment(1) == 'register') class="active"
@@ -513,11 +541,6 @@
                             </a> --}}
                             @else
                             @if (Auth::user()->isadmin <= "1")
-                            <a @if(request()->segment(1) == 'setting') class="active"
-                                @endif href="{{ route('setting.index') }}">
-                               <span class="nav-link-icon" data-feather="settings"></span>
-                                <span>ตั้งค่าระบบ</span>
-                            </a>
                             <a @if(request()->segment(1) == 'user') class="active"
                                 @endif href="/user">
                                 <span class="nav-link-icon" data-feather="users"></span>
@@ -528,12 +551,13 @@
                             <a @if(request()->segment(1) == 'profile') class="active"
                                 @endif href="/profile">
                                <span class="nav-link-icon" data-feather="user"></span>
-                                <span>ข้อมูลผู้ใช้</span>
+                                <span>ข้อมูลของคุณ</span>
                             </a>
                         </li>
 
                         @endguest
                     </ul>
+
 
                 </div>
                 <!-- ./ Menu body -->
