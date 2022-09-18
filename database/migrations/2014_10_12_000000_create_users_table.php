@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('isadmin')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('depcode')->nullable();
+            $table->string('isadmin')->nullable()->comment('ระดับผู้ใช้งาน');
+            $table->string('avatar')->nullable()->comment('ลิงก์ภาพสมาชิก');
+            $table->string('depcode')->nullable()->comment('รหัสหน่วยงาน');
             $table->rememberToken();
             $table->timestamps();
         });

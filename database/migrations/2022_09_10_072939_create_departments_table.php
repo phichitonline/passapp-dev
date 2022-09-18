@@ -19,16 +19,16 @@ return new class extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->id();
-            $table->string('depcode',10);
-            $table->string('dep_name');
+            $table->string('depcode',10)->comment('รหัสหน่วยงาน');
+            $table->string('dep_name')->comment('ชื่อหน่วยงาน');
             $table->timestamps();
         });
 
         DB::table('departments')->insert(
             array(
-                ['depcode'=> 'A001','dep_name'=> 'ฝ่ายบริหาร'],
-                ['depcode'=> 'A002','dep_name'=> 'ฝ่ายเวชกรรมฯ'],
-                ['depcode'=> 'A003','dep_name'=> 'งานผู้ป่วยนอก']
+                ['depcode'=> 'A001','dep_name'=> 'ฝ่ายบริหาร','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['depcode'=> 'A002','dep_name'=> 'ฝ่ายเวชกรรมฯ','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['depcode'=> 'A003','dep_name'=> 'งานผู้ป่วยนอก','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")]
             )
         );
     }
