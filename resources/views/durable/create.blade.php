@@ -264,7 +264,8 @@
                             <div class="form-group row">
                                 <label for="locationgps" class="col-sm-2 col-form-label text-md-right">พิกัด GPS</label>
                                 <div class="col-sm-6">
-                                    <input onclick="getLocation()" type="text" class="form-control" id="locationPoint" name="locationgps" placeholder="พิกัด GPS">
+                                    <input onclick="getLocation()" type="text" class="form-control" id="locationPoint1" placeholder="พิกัด GPS" disabled>
+                                    <input type="hidden" class="form-control" id="locationPoint" name="locationgps">
                                 </div>
                                 <div class="col-sm-4">
                                     <a onclick="getLocation()" class="btn btn-secondary text-white"><i class="ti-location-pin mr-2"></i> คลิกอ่านพิกัด GPS</a>
@@ -337,21 +338,23 @@
         };
     </script>
 
-    <script>
-        var x = document.getElementById("locationPoint");
+<script>
+    var x = document.getElementById("locationPoint");
+    var x1 = document.getElementById("locationPoint1");
 
-        async function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-        }
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
 
-        function showPosition(position) {
-            x.value = position.coords.latitude + "," + position.coords.longitude;
-        }
-    </script>
+    function showPosition(position) {
+        x.value = position.coords.latitude + "," + position.coords.longitude;
+        x1.value = position.coords.latitude + "," + position.coords.longitude;
+    }
+</script>
 
 @endsection
 
