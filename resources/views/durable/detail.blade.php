@@ -212,8 +212,7 @@
                                 @if($module3 == 1)
                                 <li><i class="fa fa-check mr-2 @if ($data->locationgps == NULL) text-light @else text-success"></i>
                                     พิกัด GPS : <a target="_blank" href="https://www.google.co.th/maps/&#64;{{ $data->locationgps }},18z?hl=th">คลิกดูแผนที่ <i class="ti-location-pin mr-2"></i></a>
-                                </li>
-                                @endif
+                                </li>@endif
                                 @endif
                                 <li><i class="fa fa-check mr-2 @if ($data->memo_text == NULL) text-light @else text-success @endif"></i>
                                     <u>หมายเหตุ</u> : <p><small>{!! $data->memo_text !!}</small></p>
