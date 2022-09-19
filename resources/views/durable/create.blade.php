@@ -101,6 +101,14 @@
                                     <input class="form-control text-red" type="file" name="manual_file" placeholder="เลือกไฟล์คู่มือ PDF" id="manual_file">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>
+                                    ลิงก์ภายนอก (Youtube/Google Drive ...)
+                                </label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="manual_link" placeholder="ใส่ลิงก์ URL http://" id="manual_link">
+                                </div>
+                            </div>
 
                         </div>
                         <div class="col-md-8">

@@ -107,12 +107,12 @@
                                             <a href="{{ route('durable.show', $data->id) }}" class="dropdown-item">ข้อมูล</a>
                                             @if (Auth::user()->isadmin <= "1")
                                             <a href="{{ route('durable.edit', $data->id) }}" class="dropdown-item">แก้ไข</a>
-                                            <form action="{{ route('durable.destroy', $data->id) }}" method="POST">
+                                            {{-- <form action="{{ route('durable.destroy', $data->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="dropdown-divider"></div>
                                                 <button class="dropdown-item text-danger" onClick="return confirm('ยืนยันการลบรายการนี้');">*** ลบ ***</button>
-                                            </form>
+                                            </form> --}}
                                             @endif
                                         @endif
                                     </div>
