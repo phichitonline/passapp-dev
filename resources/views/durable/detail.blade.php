@@ -273,7 +273,9 @@
                             <h4 class="mb-4">คู่มือ</h4>
                             <p class="font-weight-bold">
                                 คู่มือการใช้งาน<br>
-                                <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a>
+                                <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a><br>
+                                ลิงก์อื่นๆ<br>
+                                <a href="{{ $data->manual_link }}" target="_blank" rel="noopener noreferrer">{{ $data->manual_link }}</a>
                             </p>
 
                         </div>

@@ -190,6 +190,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>
+                                            ลิงก์ภายนอก (Youtube/Google Drive ...)
+                                        </label>
+                                        <input class="form-control text-red" type="text" name="manual_link" placeholder="ใส่ลิงก์ URL http://" id="manual_link" value="{{ $durable->manual_link }}">
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="col-md-8">
