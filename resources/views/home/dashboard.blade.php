@@ -12,7 +12,7 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h3>โปรแกรมครุภัณฑ์ | PassApp Test</h3>
+            <h3>โปรแกรมครุภัณฑ์ | PassApp</h3>
             <div>
                 <div class="btn btn-outline-light">
                     <i class="ti-calendar mr-2 text-muted"></i> {{ thaidate('วันlที่ j F พ.ศ.Y') }}
