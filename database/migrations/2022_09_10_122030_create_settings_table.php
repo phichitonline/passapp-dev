@@ -45,6 +45,8 @@ return new class extends Migration
                     'module4'=> '0',
                     'module5'=> '0',
                     'linetoken'=> '',
+                    'created_at'=> date("Y-m-d H:i:s"),
+                    'updated_at'=> date("Y-m-d H:i:s")
                 ]
             )
         );

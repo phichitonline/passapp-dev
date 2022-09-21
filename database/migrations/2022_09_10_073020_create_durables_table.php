@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('pass_name')->comment('ชื่อเรียกครุภัณฑ์');
             $table->string('model')->nullable()->comment('ยี่ห้อ/รุ่น');
             $table->string('serial_no')->nullable()->comment('เลขประจำเครื่อง S/N P/N');
-            $table->string('fasgrp',10)->nullable()->comment('รหัสประเภท');
+            // $table->string('fasgrp',10)->nullable()->comment('รหัสประเภท');
             $table->string('life')->nullable()->comment('อายุใช้งาน');
             $table->date('str_date')->comment('วันที่ได้มา');
             $table->double('pass_price', 20, 2)->comment('ราคา');
@@ -42,10 +42,11 @@ return new class extends Migration
             $table->text('locationgps')->nullable()->comment('พิกัด GPS ของครุภัณฑ์');
             $table->string('manual_link')->nullable()->comment('ลิงก์คู่มือ');
 
-            // $table->unsignedBigInteger('user_id')->comment('Create by User');
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->comment('Create by User');
+            $table->foreign('user_id')->references('id')->on('users');
 
-            // $table->foreign('fasgrp')->references('id')->on('typefasgrps');
+            $table->unsignedBigInteger('fasgrp')->comment('Create for Fasgrp');
+            $table->foreign('fasgrp')->references('id')->on('typefasgrps');
             // $table->foreign('str1')->references('id')->on('typemoneys');
             // $table->foreign('depcode')->references('depcode')->on('departments');
             $table->timestamps();

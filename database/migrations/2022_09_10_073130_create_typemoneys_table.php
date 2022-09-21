@@ -25,10 +25,10 @@ return new class extends Migration
 
         DB::table('typemoneys')->insert(
             array(
-                ['money_name'=> 'เงินงบประมาณ'],
-                ['money_name'=> 'เงินบำรุง'],
-                ['money_name'=> 'เงินบริจาค'],
-                ['money_name'=> 'เงินงบค่าเสื่อม']
+                ['money_name'=> 'เงินงบประมาณ','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['money_name'=> 'เงินบำรุง','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['money_name'=> 'เงินบริจาค','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['money_name'=> 'เงินงบค่าเสื่อม','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")]
             )
         );
     }

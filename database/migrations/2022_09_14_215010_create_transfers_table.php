@@ -19,7 +19,7 @@ return new class extends Migration
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('durableid',10);
-            $table->string('depcodeold',10);
+            $table->string('depcodeold',10)->nullable();
             $table->string('depcode',10);
             $table->string('userid',10);
             $table->timestamps();

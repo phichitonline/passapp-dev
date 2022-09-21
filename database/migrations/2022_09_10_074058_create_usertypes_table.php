@@ -26,10 +26,10 @@ return new class extends Migration
 
         DB::table('usertypes')->insert(
             array(
-                ['type'=> '0','usertype'=> 'Super Admin'],
-                ['type'=> '1','usertype'=> 'ผู้ดูแลระบบ'],
-                ['type'=> '2','usertype'=> 'เจ้าหน้าที่พัสดุ'],
-                ['type'=> '3','usertype'=> 'เจ้าหน้าที่ทั่วไป']
+                ['type'=> '0','usertype'=> 'Super Admin','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['type'=> '1','usertype'=> 'ผู้ดูแลระบบ','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['type'=> '2','usertype'=> 'เจ้าหน้าที่พัสดุ','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")],
+                ['type'=> '3','usertype'=> 'เจ้าหน้าที่ทั่วไป','created_at'=> date("Y-m-d H:i:s"),'updated_at'=> date("Y-m-d H:i:s")]
             )
         );
     }
